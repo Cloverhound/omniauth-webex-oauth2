@@ -3,7 +3,10 @@ module OmniAuth
   module Strategies
     class Webex < OmniAuth::Strategies::OAuth2
       AUTHORIZE_OPTIONS = %i[response_type max_age login_hint prompt scope state redirect_uri nonce]
+      
       option :name, 'webex'
+      option :authorize_options, AUTHORIZE_OPTIONS
+      option :overridable_authorize_options, AUTHORIZE_OPTIONS
 
       option :client_options, {
         authorize_url: 'https://webexapis.com/v1/authorize',
