@@ -3,7 +3,7 @@ module OmniAuth
   module Strategies
     class Webex < OmniAuth::Strategies::OAuth2
       AUTHORIZE_OPTIONS = %i[response_type max_age login_hint prompt scope state redirect_uri nonce]
-      
+
       option :name, 'webex'
       option :authorize_options, AUTHORIZE_OPTIONS
       option :overridable_authorize_options, AUTHORIZE_OPTIONS
@@ -26,11 +26,11 @@ module OmniAuth
 
       info do
         {
-          'email' => raw_info['emails'].first,
+          'email' => raw_info['emails']&.first,
           'nickname' => raw_info['nickName'],
           'first_name' => raw_info['firstName'],
           'last_name' => raw_info['lastName'],
-          'phone' => raw_info['phoneNumbers'].first
+          'phone' => raw_info['phoneNumbers']&.first
         }
       end
 
